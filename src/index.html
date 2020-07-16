@@ -10,10 +10,48 @@
     <!-- link js file -->
     <script src='./js/app.js' defer></script>
 
-    <title>Document</title>
+    <title>Login | Control Panel</title>
   </head>
   <body>
-  <div class='wraper'></div>
+  <div class='wraper'>
+    <div class="login__form">
+      <div class="justify-center">
+        <h1 class="tittle">Sign In</h1>
+        <form action="#" autocomplete="off" class="form" id="form">
+          <div class="form__control">
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="form__input"
+              placeholder="User Name"
+              required
+            />
+            <label for="username" class="form__label">User Name</label>
+          </div>
+          <div class="form__control">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form__input"
+              placeholder="Password"
+              required
+            />
+            <label for="password" class="form__label">Password</label>
+          </div>
+          <div class="form__btn">
+            <button type="submit" class="btn__form btn__form--submit">
+              Submit
+            </button>
+            <button type="reset" class="btn__form btn__form--clear">
+              Clear
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   </body>
 </html>
 

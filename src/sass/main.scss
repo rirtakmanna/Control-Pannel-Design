@@ -1,45 +1,447 @@
-@import 'mixins';
+$bg-color: #1c1d21;
+$para-color: #fafffd;
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+/*
+bg-desktop  - 1900px and up       -min-width(118.75em)      1900px/16   118.75em
+desktop     - 1600px and up       -min-width(100em)         1600px/16   100em
+laptop      - 1200px and up
+tab-land    - 950px and up        -max-width(75em)          1200px/16   75em
+tab-prot    - 700px and up        -max-width(59.375em)      950px/16    59.375em
+phone-land  - 400px and up        -max-width(43.75em)       700px/16    43.75em
+phone-prot  - 400px and down      -max-width(28.125em)      450px/16    28.125em
+
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == bg-desk {
+    @media only screen and (min-width: 118.75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == desk {
+    @media only screen and (min-width: 100em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-prot {
+    @media only screen and (max-width: 59.375em) {
+      @content;
+    }
+  }
+  @if $breakpoint == phone-land {
+    @media only screen and (max-width: 43.75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == phone-prot {
+    @media only screen and (max-width: 28.125em) {
+      @content;
+    }
+  }
+}
+
+/*
+@include respond(tab-land) {        //900px to 1200px - 75rem
+}
+@include respond(tab-prot) {        //700px to 900px - 59.375rem
+}
+@include respond(phone-land) {      //400px to 700px - 43.75em
+}
+@include respond(phone-prot) {      //0px to 400px - 28.125em
+}
+@include respond(desk) {            //1600px - 2000px - 100 rem
+}
+@include respond(bg-desk) {         //2000px and up - 118.75rem
+}
+*/
 
 * {
   margin: 0;
   padding: 0;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
 html {
   font-size: 62.5%;
+  /*1 rem = 10px*/
+  scroll-behavior: smooth;
+}
 
-  //media quries in series
-  @include respond(tab-land) {
-    //max-width(1200px)
-    font-size: 56.25%; //1rem = 9px
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 56.25%;
   }
-  @include respond(tab-prot) {
-    //max-width(950px)
-    font-size: 50%; //1rem = 8rem
+}
+
+@media only screen and (max-width: 59.375em) {
+  html {
+    font-size: 50%;
   }
-  @include respond(desk) {
-    //min-width(1900px)
-    font-size: 75%; //1rem = 12px
+}
+
+@media only screen and (min-width: 100em) {
+  html {
+    font-size: 75%;
   }
-  @include respond(bg-desk) {
-    //min-width(1600px)
-    font-size: 87.5%; //1rem = 14px
+}
+
+@media only screen and (min-width: 118.75em) {
+  html {
+    font-size: 87.5%;
   }
 }
 
 body {
-  box-sizing: border-box;
   position: relative;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.016rem;
+  line-height: 2.4rem;
+  background-color: #25262e;
+  color: $para-color;
 }
 
-.wraper {
+::selection {
+  background-color: $para-color;
+  color: $bg-color;
+}
+
+.wrapper {
   position: absolute;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
 }
 
+.login__form {
+  background-color: $bg-color;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-center {
+  padding: 5rem 2rem;
+  width: 40%;
+  box-shadow: 0 5rem 10rem rgba(#f9faf7, 0.1);
+
+  
+
+  @include respond(tab-prot) {
+    //700px to 900px - 59.375rem
+    width: 45%;
+  }
+
+  @include respond(phone-land) {
+    //400px to 700px - 43.75em
+    width: 67%;
+  }
+  @include respond(phone-prot) {
+    //0px to 400px - 28.125em
+    width: 80%;
+  }
+}
+
+.tittle {
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.05rem;
+  text-align: center;
+}
+
+.form {
+  padding: 0 3rem;
+
+  &__control {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+  }
+
+  &__input {
+    display: block;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1.4rem;
+    height: 3rem;
+    color: inherit;
+    width: 90%;
+    border: 2px solid #48e98a;
+    border-radius: 0.7rem;
+    background-color: rgba(#48e98a, 0.15);
+    padding: 1.5rem 2rem;
+    @include respond(phone-prot) {      //0px to 400px - 28.125em
+      width: 80%;
+      height: 2rem;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 5px 10px rgba(#f9faf7, 0.15);
+      border-color: #00b34a;
+    }
+
+    &:focus:invalid {
+      border-color: #eb736d;
+      color: rgba(216, 70, 63, 0.8);
+      background-color: rgba(235, 115, 109, 0.15);
+    }
+
+    ::-webkit-input-placeholder {
+      color: rgba($para-color, 0.5);
+    }
+  }
+
+  &__label {
+    display: block;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: inherit;
+    margin-left: 2rem;
+    transition: all 0.4s cubic-bezier(0.11, 0.59, 0.91, 0.59);
+  }
+
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4rem);
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 4rem;
+
+    @include respond(phone-prot) {      //0px to 400px - 28.125em
+      margin-top: 3rem;
+    }
+  }
+}
+
+.btn {
+  &__form {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 1.5rem 5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(#f9faf7, 0.15);
+    font-weight: 700;
+    transition: all 0.2s cubic-bezier(0.11, 0.59, 0.91, 0.59);
+
+    @include respond(phone-prot) {
+      //0px to 400px - 28.125em
+      padding: 1rem 2.5rem;
+    }
+
+    &--clear {
+      border: 2px solid #fe4551;
+      background-color: transparent;
+      color: #fe4551;
+
+      &:hover {
+        transform: translateY(-3px);
+        text-shadow: 0 10px 20px rgba(#f9faf7, 0.1);
+        background-color: #fe4551;
+        color: $bg-color;
+        border: 2px solid #fe4551;
+      }
+
+      &:active,
+      &:focus {
+        outline: none;
+        transform: translateY(-1.5px);
+        text-shadow: 0 5px 10px rgba(9, 14, 19, 0.15);
+        background-color: #eb736d;
+        color: $bg-color;
+        border: 2px solid #eb736d;
+      }
+    }
+
+    &--submit {
+      border: 2px solid #48e98a;
+      background-color: transparent;
+      color: #48e98a;
+      &:hover {
+        transform: translateY(-3px);
+        text-shadow: 0 10px 20px rgba(#f9faf7, 0.1);
+        background-color: #48e98a;
+        color: $bg-color;
+        border: 2px solid #48e98a;
+      }
+
+      &:active,
+      &:focus {
+        outline: none;
+        transform: translateY(-1.5px);
+        text-shadow: 0 5px 10px rgba(9, 14, 19, 0.15);
+        background-color: #00b34a;
+        color: $bg-color;
+        border: 2px solid #00b34a;
+      }
+    }
+  }
+}
+
+.tittle-main {
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.05rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+
+  &__item {
+    height: 20rem;
+    width: 20rem;
+    margin: 3rem 2rem;
+  }
+
+  &__tittle {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  &__toggle {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+}
+
+input {
+  display: none;
+}
+
+.toggleWrapper {
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background-color: #fe4551;
+  box-shadow: 0 20px 20px 0 rgba(#fe4551, 0.2);
+
+  &:active {
+    width: 7.5rem;
+    height: 7.5rem;
+    box-shadow: 0 1.5rem 1.5rem 0 rgba(#fe4551, 0.4);
+
+    .toggle {
+      height: 1.7rem;
+      width: 1.7rem;
+    }
+  }
+
+  .toggle {
+    transition: all 0.2s ease-in-out;
+    height: 2rem;
+    width: 2rem;
+    background-color: transparent;
+    border: 1rem solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+
+    animation: red 0.7s linear forwards;
+  }
+}
+
+input:checked {
+  & + .toggleWrapper {
+    background-color: #48e98a;
+    box-shadow: 0 2rem 2rem 0 rgba(#48e98a, 0.3);
+
+    &:active {
+      box-shadow: 0 1.5rem 1.5rem 0 rgba(#48e98a, 0.5);
+    }
+    .toggle {
+      width: 0;
+      background-color: #fff;
+      border-color: transparent;
+      border-radius: 3rem;
+      animation: green 0.7s linear forwards !important;
+    }
+  }
+}
+@keyframes red {
+  0% {
+    height: 3rem;
+    width: 0;
+    border-width: 0.5rem;
+  }
+  55% {
+    height: 1.3rem;
+    width: 2.7rem;
+    border-width: 1rem;
+  }
+
+  70% {
+    height: 2rem;
+    width: 2rem;
+    border-width: 1rem;
+  }
+
+  85% {
+    height: 1.5rem;
+    width: 2.5rem;
+    border-width: 1rem;
+  }
+
+  100% {
+    height: 2rem;
+    width: 2rem;
+    border-width: 1rem;
+  }
+}
+
+@keyframes green {
+  0% {
+    height: 2rem;
+    width: 2rem;
+    border-width: 1rem;
+  }
+  25%,
+  55%,
+  85% {
+    height: 3rem;
+    width: 0.5rem;
+    border-width: 0.5rem;
+  }
+
+  40%,
+  70%,
+  100% {
+    height: 3rem;
+    width: 0;
+    border-width: 0.5rem;
+  }
+}
