@@ -11,7 +11,7 @@
     <img alt="License: ISC" src="https://img.shields.io/github/license/rirtakmanna/Control Pannel Design" />
   </a>
   <a href="https://twitter.com/manna\_rirtak" target="_blank">
-    <img alt="Twitter: manna\_rirtak" src="https://img.shields.io/twitter/follow/manna\_rirtak.svg?style=social" />
+    <img alt="Twitter: manna\_rirtak" src="https://img.shields.io/twitter/follow/manna_rirtak.svg?style=social" />
   </a>
 </p>
 
