@@ -5,7 +5,7 @@ if (document.getElementById("form")) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    if (username.value === "sajalBain" && password.value === "password") {
+    if (username.value === "username" && password.value === "password") {
       window.location.href = "./switch.html";
     } else {
       alert("Username or password error");
