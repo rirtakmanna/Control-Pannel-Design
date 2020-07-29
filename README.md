@@ -11,11 +11,13 @@
     <img alt="License: ISC" src="https://img.shields.io/github/license/rirtakmanna/Control Pannel Design" />
   </a>
   <a href="https://twitter.com/manna\_rirtak" target="_blank">
-    <img alt="Twitter: manna\_rirtak" src="https://img.shields.io/twitter/follow/manna\_rirtak.svg?style=social" />
+    <img alt="Twitter: manna_rirtak" src="https://img.shields.io/twitter/follow/manna\_rirtak.svg?style=social" />
   </a>
 </p>
 
-> Control Pannel with 10 Switch to work with any backend device
+> A basic signup page and a control Pannel with 10 Switch to work with any backend device
+> Username :- **username**
+> password :- **password**
 
 ### 🏠 [Homepage](https://github.com/rirtakmanna/Control-Pannel-Design#readme)
 
